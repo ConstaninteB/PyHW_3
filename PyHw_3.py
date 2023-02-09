@@ -30,12 +30,49 @@
 # -> 5
 
 
-length = int(input("Введите длину массива: "))
-frst_list = [i + 1 for i  in range(length) ]
-print(frst_list)
-Fnd_num = int(input("Введите число X: "))
-min_num = frst_list[0]
-for i in frst_list:
-    if abs(Fnd_num - i) < (Fnd_num - min_num):
-       min_num = i 
-print(f"Найближайщее число из массива - это  {min_num}")       
+# length = int(input("Введите длину массива: "))
+# frst_list = [i + 1 for i  in range(length) ]
+# print(frst_list)
+# Fnd_num = int(input("Введите число X: "))
+# min_num = frst_list[0]
+# for i in frst_list:
+#     if abs(Fnd_num - i) < (Fnd_num - min_num):
+#        min_num = i 
+# print(f"Найближайщее число из массива - это  {min_num}")       
+
+
+# Задача 20: В настольной игре Скрабл (Scrabble) каждая буква имеет определенную ценность.
+# В случае с английским алфавитом очки распределяются так:
+# A, E, I, O, U, L, N, S, T, R – 1 очко;
+# D, G – 2 очка;
+# B, C, M, P – 3 очка;
+# F, H, V, W, Y – 4 очка;
+# K – 5 очков;
+# J, X – 8 очков;
+# Q, Z – 10 очков.
+# А русские буквы оцениваются так:
+# А, В, Е, И, Н, О, Р, С, Т – 1 очко;
+# Д, К, Л, М, П, У – 2 очка;
+# Б, Г, Ё, Ь, Я – 3 очка;
+# Й, Ы – 4 очка;
+# Ж, З, Х, Ц, Ч – 5 очков;
+# Ш, Э, Ю – 8 очков;
+# Ф, Щ, Ъ – 10 очков.
+# Напишите программу, которая вычисляет стоимость введенного пользователем слова. 
+# Будем считать, что на вход подается только одно слово, которое содержит либо только английские, либо только русские буквы.
+# Ввод:
+# ноутбук
+# Вывод:
+# 12
+
+full_dict = {"AEIOULNSTRАВЕИНОРСТ": 1, "DGДКЛМПУ": 2,
+            "BCMPБГЁЬЯ": 3, "FHVWYЙЫ": 4, "KЖЗХЦЧ": 5,
+            "JXШЭЮ": 8, "QZФЩЪ": 10}
+Score_wrd = input("Введите слово: ")
+Score_lst = []
+for i in full_dict.items():  
+    for j in Score_wrd:
+         if j.upper() in i[0]:
+           Score_lst.append(i[1])  
+print(sum(Score_lst)) 
+
